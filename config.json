@@ -1,7 +1,17 @@
 {
-    "name": "Mario Souto (DevSoutinho)",
-    "job": "Lead Software Engineer",
+    "name": "Rafa Galvão",
+    "job": "Dev Software ",
     "github": "ralexandre",
+    "favoritos":[
+        {
+            "name":"Rafa Galvão",
+            "thumb":"https://img.youtube.com/vi/0JWMVc1CqpA/hqdefault.jpg"
+        }, 
+        {
+            "name":"Galvão2",
+            "thumb":"https://img.youtube.com/vi/0JWMVc1CqpA/hqdefault.jpg"
+        }
+    ],
     "playlists": {
         "jogos": [
             {

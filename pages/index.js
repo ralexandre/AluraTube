@@ -21,6 +21,7 @@ function HomePage() {
       <Menu/>
       <Header />
       <Timeline playlists={config.playlists} />
+      <Favoritos favoritos={config.favoritos}/>
     </div>
     </>
   );
@@ -28,7 +29,17 @@ function HomePage() {
 
 export default HomePage;
 
-
+const StyleFavorito = styled.div`
+    img {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;        
+    }
+    .favorito{
+        display: inline-block;
+        margin: 10px;
+    }
+`;
 
 const StyledHeader = styled.div`
   img {
@@ -37,18 +48,23 @@ const StyledHeader = styled.div`
     border-radius: 50%;
   }
   .user-info {
-    margin-top: 50px;
     display: flex;
     align-items: center;
     width: 100%;
     padding: 16px 32px;
     gap: 16px;
   }
+  .banner{
+    width: 100%;
+    height: 200px;
+    text-align: center;
+    background-image: url("https://img.youtube.com/vi/QsqatJxAUtk/hqdefault.jpg");
+  }
 `;
 function Header() {
   return (
     <StyledHeader>
-      {/* <img src="" /> */}
+      <div className="banner">Teste</div>
       <section className="user-info">
         <img src={`https://github.com/${config.github}.png`} />
         <div>
@@ -59,13 +75,36 @@ function Header() {
     </StyledHeader>
   );
 }
+function Favoritos(props){
+    const favorito = Object.keys(props.favoritos);
+    //console.log(props.favoritos);
+    return (
+        <section>
+            <h2>Favoritos</h2>
+            <StyleFavorito>
+                {       
+                        favorito.map((fav)=>{  
+                            const dado = props.favoritos[fav];
+                            return (
+                                <a className="favorito">
+                                    <img src={dado.thumb} />
+                                    <p>{dado.name} </p>
+                                </a>
+                            );                      
+                        })
+                    };            
+            </StyleFavorito>
+        </section>
+    );
+}
 
 function Timeline(props) {
     const playlistNames = Object.keys(props.playlists);
     //statement y retorno por expressão
     return (
       <StyledTimeline>
-        {playlistNames.map((playlistName) => {
+        {
+        playlistNames.map((playlistName) => {
           const videos = props.playlists[playlistName];
           return (
             <section>
